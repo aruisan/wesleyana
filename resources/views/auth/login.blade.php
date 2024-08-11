@@ -1,6 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
+<style>
+    body {
+        background-image: url("{{asset('/plantilla_advent/img/slider-1.jpg')}}"); /* Ruta a tu imagen de fondo */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad para el formulario */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para el card */
+    }
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

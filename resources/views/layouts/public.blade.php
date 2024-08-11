@@ -35,34 +35,34 @@
 
           <div class="collapse navbar-collapse" id="navbarsExample05">
             <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="{{route('public.inicio')}}">Inicios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('public.quienes_somos')}}">¿Quienes somos?</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{route('public.ministerios')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mnisterios
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="{{route('public.ministerios')}}">Evangelismo</a>
-                  <a class="dropdown-item" href="{{route('public.ministerios')}}">Diaconado</a>
-                  <a class="dropdown-item" href="{{route('public.ministerios')}}">Escuela Infantil</a>
-                  <a class="dropdown-item" href="{{route('public.ministerios')}}">Multimedia</a>
-                  <a class="dropdown-item" href="{{route('public.ministerios')}}">Alabanza</a>
-                  <a class="dropdown-item" href="{{route('public.ministerios')}}">Intercesión</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('public.eventos')}}">Eventos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('public.contacto')}}">Contacto</a>
-              </li>
+                <li class="nav-item {{ Route::currentRouteName() == 'public.inicio' ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'public.inicio' ? 'active' : '' }}" href="{{ route('public.inicio') }}">Inicio</a>
+                </li>
+                <li class="nav-item {{ Route::currentRouteName() == 'public.quienes_somos' ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'public.quienes_somos' ? 'active' : '' }}" href="{{ route('public.quienes_somos') }}">¿Quiénes somos?</a>
+                </li>
+                <li class="nav-item dropdown {{ Route::currentRouteName() == 'public.ministerios' ? 'active' : '' }}">
+                    <a class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'public.ministerios' ? 'active' : '' }}" href="{{ route('public.ministerios') }}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ministerios
+                    </a>
+                    <div class="dropdown-menu {{ Route::currentRouteName() == 'public.ministerios' ? 'show' : '' }}" aria-labelledby="dropdown04">
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'public.ministerios.evangelismo' ? 'active' : '' }}" href="{{ route('public.ministerios', ['type' => 'evangelismo']) }}">Evangelismo</a>
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'public.ministerios.diaconado' ? 'active' : '' }}" href="{{ route('public.ministerios', ['type' => 'diaconado']) }}">Diaconado</a>
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'public.ministerios.escuela_infantil' ? 'active' : '' }}" href="{{ route('public.ministerios', ['type' => 'escuela_infantil']) }}">Escuela Infantil</a>
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'public.ministerios.multimedia' ? 'active' : '' }}" href="{{ route('public.ministerios', ['type' => 'multimedia']) }}">Multimedia</a>
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'public.ministerios.alabanza' ? 'active' : '' }}" href="{{ route('public.ministerios', ['type' => 'alabanza']) }}">Alabanza</a>
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'public.ministerios.intercesion' ? 'active' : '' }}" href="{{ route('public.ministerios', ['type' => 'intercesion']) }}">Intercesión</a>
+                    </div>
+                </li>
+                <li class="nav-item {{ Route::currentRouteName() == 'public.eventos' ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'public.eventos' ? 'active' : '' }}" href="{{ route('public.eventos') }}">Eventos</a>
+                </li>
+                <li class="nav-item {{ Route::currentRouteName() == 'public.contacto' ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'public.contacto' ? 'active' : '' }}" href="{{ route('public.contacto') }}">Contacto</a>
+                </li>
             </ul>
-            
           </div>
+        
         </div>
       </nav>
     </header>
@@ -74,7 +74,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4 mb-5">
-            <h3>About The Advent</h3>
+            <h3>Acerca de The Advent</h3>
             <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.</p>
             <ul class="list-unstyled footer-link d-flex footer-social">
               <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
@@ -82,38 +82,47 @@
               <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
               <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
             </ul>
-
           </div>
           <div class="col-md-3 mb-5">
-            <h3>Quick Links</h3>
+            <h3>Enlaces Rápidos</h3>
             <ul class="list-unstyled footer-link">
-              <li><a href="#">Sermons</a></li>
-              <li><a href="#">Ministries</a></li>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Sermones</a></li>
+              <li><a href="#">Ministerios</a></li>
+              <li><a href="#">Eventos</a></li>
+              <li><a href="#">Contacto</a></li>
             </ul>
           </div>
           <div class="col-md-5 mb-5">
-            <h3>Contact Info</h3>
+            <h3>Información de Contacto</h3>
             <ul class="list-unstyled footer-link">
               <li class="d-block">
-                <span class="d-block">Address:</span>
-                <span class="text-white">34 Street Name, City Name Here, United States</span></li>
-              <li class="d-block"><span class="d-block">Telephone:</span><span class="text-white">+1 242 4942 290</span></li>
-              <li class="d-block"><span class="d-block">Email:</span><span class="text-white">info@yourdomain.com</span></li>
+                <span class="d-block">Dirección:</span>
+                <span class="text-white">34 Nombre de Calle, Nombre de Ciudad Aquí, Estados Unidos</span>
+              </li>
+              <li class="d-block">
+                <span class="d-block">Teléfono:</span>
+                <span class="text-white">+1 242 4942 290</span>
+              </li>
+              <li class="d-block">
+                <span class="d-block">Correo Electrónico:</span>
+                <span class="text-white">info@tudominio.com</span>
+              </li>
             </ul>
           </div>
-          
         </div>
         <div class="row">
           <div class="col-12 text-md-center text-left">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> <br> Demo Images Unsplash</p>
+            <p>
+              <!-- El enlace a Colorlib no se puede eliminar. La plantilla está licenciada bajo CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta plantilla está hecha con <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- El enlace a Colorlib no se puede eliminar. La plantilla está licenciada bajo CC BY 3.0. -->
+              <br> Imágenes de demostración Unsplash
+            </p>
           </div>
         </div>
       </div>
     </footer>
+    
     <!-- END footer -->
 
     <!-- loader -->
@@ -147,6 +156,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             });
     </script>
 
-    @yield('css')
+    @yield('js')
   </body>
 </html>

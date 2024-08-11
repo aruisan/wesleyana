@@ -19,6 +19,8 @@ Route::get('/ministerios', 'PublicController@ministerios')->name('public.ministe
 Route::get('/eventos', 'PublicController@eventos')->name('public.eventos');
 Route::get('/contacto', 'PublicController@contacto')->name('public.contacto');
 
+Route::post('/guardar-imagen', 'ImagenController@store')->name('public.guardar-imagen');
+
 
 Auth::routes();
 
