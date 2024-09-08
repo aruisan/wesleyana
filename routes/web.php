@@ -21,7 +21,11 @@ Route::get('/contacto', 'PublicController@contacto')->name('public.contacto');
 
 Route::post('/guardar-imagen', 'ImagenController@store')->name('public.guardar-imagen');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test', 'TestController@index')->name('test.index');
+Route::post('/test', 'TestController@store')->name('test.store');
+Route::get('/test/{test}', 'TestController@show')->name('test.show');
+
