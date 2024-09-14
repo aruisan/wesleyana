@@ -21,42 +21,17 @@
                         <th>Cualidades</th>
                     </thead>
                     <tbody>
-                        <tr class="text-left bg-primary text-white">
-                            <td>D</td>
-                            <td>{{count($respuestas[0])}}</td>
-                            <td>
-                                @foreach($respuestas[0] as $res)
-                                    <span class="badge badge-light btn">{{$res}}</span>
-                                @endforeach
-                            </td>
-                        </tr>
-                        <tr class="text-left bg-primary text-white">
-                            <td>I</td>
-                            <td>{{count($respuestas[1])}}</td>
-                            <td>
-                                @foreach($respuestas[1] as $res)
-                                    <span class="badge badge-light btn">{{$res}}</span>
-                                @endforeach
-                            </td>
-                        </tr>
-                        <tr class="text-left">
-                            <td>S</td>
-                            <td>{{count($respuestas[2])}}</td>
-                            <td>
-                                @foreach($respuestas[2] as $res)
-                                    <span class="badge badge-primary btn">{{$res}}</span>
-                                @endforeach
-                            </td>
-                        </tr>
-                        <tr class="text-left">
-                            <td>C</td>
-                            <td>{{count($respuestas[3])}}</td>
-                            <td>
-                                @foreach($respuestas[3] as $res)
-                                    <span class="badge badge-primary btn">{{$res}}</span>
-                                @endforeach
-                            </td>
-                        </tr>
+                        @foreach($respuestas as $r => $respuesta)
+                            <tr class="text-left {{array_search($r, $keys) < 2 ? 'bg-primary text-white' : ''}}">
+                                <td>{{strtoupper($r)}}</td>
+                                <td>{{count($respuesta)}}</td>
+                                <td>
+                                    @foreach($respuesta as $atributos)
+                                        <span class="badge badge-light btn">{{$atributos}}</span>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
     </div>

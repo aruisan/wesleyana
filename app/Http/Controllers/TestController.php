@@ -23,16 +23,29 @@ class TestController extends Controller
     }
 
     public function show(Test $test){
+        $letras_index = ['d', 'i', 's', 'c'];
+      
         $respuestas = [
-            [],
-            [],
-            [],
-            []
+            'd' => [],
+            'i' =>[],
+            's' =>[],
+            'c' =>[]
         ];
 
         $respuestas_matriz = $this->respuestas_matriz();
-        $matriz_preguntas = $this->matriz_preguntas();
-        
+        $preguntas = $this->matriz_preguntas();
+
+        /*
+        $result = [];
+
+        foreach ($respuestas_matriz as $numArray) {
+            $convertedArray = array_map(function($num) use ($letras_index) {
+                return $letras_index[$num];
+            }, $numArray);
+
+            $result[] = $convertedArray;
+        }
+            */
 /*
         foreach($this->respuestas_matriz() as $pregunta): 
             array_push($pr['d'], $pregunta[0]);
@@ -45,14 +58,19 @@ class TestController extends Controller
         foreach($test->respuestas as $i => $respuesta):
             $r = intval($respuesta->respuesta);
             $index = array_search($r, $respuestas_matriz[$i]);
-            array_push($respuestas[$index], $matriz_preguntas[$i][$r]);
+            array_push($respuestas[$letras_index[$index]], $preguntas[$i][$r]);
         endforeach;
 
-        usort($respuestas, function($a, $b) {
+        uasort($respuestas, function($a, $b) {
             return count($b) - count($a);
         });
 
-        return view('test.show', compact('test', 'respuestas'));
+        $keys = array_keys($respuestas);
+
+
+        //dd([$respuestas]);
+
+        return view('test.show', compact('test', 'respuestas', 'keys'));
     }
 
     public function respuestas_matriz(){
