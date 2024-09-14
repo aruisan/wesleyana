@@ -34,6 +34,29 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($preguntas as $p => $pregunta)
+                        <tr class="text-left">
+                            <td>{{$p+1}}</td>
+                            <td class="{{$test->respuestas[$p]->respuesta == 0 ? 'bg-primary' : ''}}""> {{$pregunta[0]}}</td>
+                            <td class="{{$test->respuestas[$p]->respuesta == 1 ? 'bg-primary' : ''}}""> {{$pregunta[1]}}</td>
+                            <td class="{{$test->respuestas[$p]->respuesta == 2 ? 'bg-primary' : ''}}""> {{$pregunta[2]}}</td>
+                            <td class="{{$test->respuestas[$p]->respuesta == 3 ? 'bg-primary' : ''}}""> {{$pregunta[3]}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>

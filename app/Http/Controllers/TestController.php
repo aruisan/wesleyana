@@ -70,7 +70,7 @@ class TestController extends Controller
 
         //dd([$respuestas]);
 
-        return view('test.show', compact('test', 'respuestas', 'keys'));
+        return view('test.show', compact('test', 'respuestas', 'keys', 'preguntas'));
     }
 
     public function respuestas_matriz(){
