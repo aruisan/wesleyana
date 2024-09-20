@@ -29,11 +29,15 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/test', [TestController::class, 'index'])->name('test.index');
+Route::get('/test', [TestController::class, 'create'])->name('test.create');
 Route::post('/test', [TestController::class, 'store'])->name('test.store');
-Route::get('/test/{test}', [TestController::class, 'show'])->name('test.show');
+Route::get('/test/{test}', [TestController::class, 'show'])->name('test.show_public')->middleware('signed');
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard/'], function () {
+    Route::get('/test/listar', [TestController::class, 'index'])->name('test.index');
+    Route::get('/test/{test}', [TestController::class, 'show'])->name('test.show');
+});
+

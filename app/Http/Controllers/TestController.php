@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class TestController extends Controller
 {
     public function index(){
+        $tests = Test::all();
+        return view('test.index', compact('tests'));
+    }
+
+    public function create(){
         $preguntas = $this->matriz_preguntas();
-        return view('test.index', compact('preguntas'));
+        return view('test.create', compact('preguntas'));
     }
 
     public function store(Request $request){
@@ -19,7 +25,12 @@ class TestController extends Controller
             //dd($respuesta);
             $test->respuestas()->create(['respuesta' => $respuesta]);
         endforeach;
-        return redirect()->route('test.show', $test->id);
+
+        $signedUrl = URL::signedRoute('test.show_public', $test->id);
+
+        // Redirigir a la URL firmada
+        return redirect()->to($signedUrl);
+        //return redirect()->route('test.show_public', $test->id);
     }
 
     public function show(Test $test){
@@ -69,8 +80,8 @@ class TestController extends Controller
 
 
         //dd([$respuestas]);
-
-        return view('test.show', compact('test', 'respuestas', 'keys', 'preguntas'));
+        $view = !auth()->check() ? 'show_public' : 'show';
+        return view("test.{$view}", compact('test', 'respuestas', 'keys', 'preguntas'));
     }
 
     public function respuestas_matriz(){
