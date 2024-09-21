@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Crypt;
 
 class TestController extends Controller
 {
@@ -13,15 +14,18 @@ class TestController extends Controller
         return view('test.index', compact('tests'));
     }
 
-    public function create(){
+    public function create($token_group){
+        $group_id = Crypt::decrypt($token_group);
+
+        //dd($group_id);
         $preguntas = $this->matriz_preguntas();
-        return view('test.create', compact('preguntas'));
+        return view('test.create', compact('preguntas', 'group_id'));
     }
 
     public function store(Request $request){
-        //dd($request->all());
-        $test = Test::create($request->only(['nombre']));
-        foreach($request->except(['nombre', '_token']) as $respuesta):
+       // dd($request->all());
+        $test = Test::create($request->only(['nombre', 'group_test_id']));
+        foreach($request->except(['nombre', '_token', 'group_test_id']) as $respuesta):
             //dd($respuesta);
             $test->respuestas()->create(['respuesta' => $respuesta]);
         endforeach;

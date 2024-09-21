@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('title')
-Listado de la Encuesta sobre Temperamentos | Wesleyana
+Listado de test de la clase {{$group->name}} | Wesleyana
 @endsection
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-center">Listado de la Encuesta sobre Temperamentos</h1>
+    <h1 class="text-center">Listado de test de la clase {{$group->name}}</h1>
         <table class="table table-bordered text-center">
             <thead>
                 <th>Nombre</th>
                 <th>Fecha</th>
             </thead>
             <tbody>
-                @foreach($tests as $t => $test)
+                @foreach($group->tests as $t => $test)
                     <tr>
                         <td>
                             <a href="{{route('test.show', $test->id)}}">

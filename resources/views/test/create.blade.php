@@ -11,6 +11,7 @@
             <h1 class="text-center">Encuesta sobre Temperamentos</h1>
             <form method="post" action="{{route('test.store')}}" id="form">
                 @csrf  
+                <input type="hidden" value="{{$group_id}}" name="group_test_id">
                 <div class="form-group">
                     <label for="nombreCompleto">Nombre Completo</label>
                     <input type="text" class="form-control" id="nombreCompleto" name="nombre" placeholder="Ingresa tu nombre completo" required>
